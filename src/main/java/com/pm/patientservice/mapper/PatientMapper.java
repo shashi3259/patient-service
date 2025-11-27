@@ -12,6 +12,7 @@ public class PatientMapper {
         PatientResponseDTO patientResponseDTO = new PatientResponseDTO();
             patientResponseDTO.setId(patient.getId().toString());
             patientResponseDTO.setName(patient.getName());
+            patientResponseDTO.setAddress(patient.getAddress());
             patientResponseDTO.setEmail(patient.getEmail());
             patientResponseDTO.setDateOfBirth(patient.getDateOfBirth().toString());
        return patientResponseDTO;

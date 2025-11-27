@@ -1,7 +1,7 @@
 package com.pm.patientservice.service;
 
-import com.pm.patientservice.GlobalExceptionHadler.EmailAlreadyExistsException;
-import com.pm.patientservice.GlobalExceptionHadler.PatientNotFoundException;
+import com.pm.patientservice.globalExceptionHadler.EmailAlreadyExistsException;
+import com.pm.patientservice.globalExceptionHadler.PatientNotFoundException;
 import com.pm.patientservice.dto.PatientRequestDTO;
 import com.pm.patientservice.dto.PatientResponseDTO;
 import com.pm.patientservice.mapper.PatientMapper;
@@ -38,7 +38,7 @@ public class PatientService {
 
     public PatientResponseDTO updatePatient(UUID id, PatientRequestDTO patientRequestDTO){
         Patient patient = patientRepository.findById(id).orElseThrow(() -> new PatientNotFoundException("Patient Id: " + id + " not found."));
-        if(patientRepository.existsByEmail(patientRequestDTO.getEmail()))
+        if(patientRepository.existsByEmailAndIdNot(patientRequestDTO.getEmail(),id))
             throw new EmailAlreadyExistsException("Email: "+ patientRequestDTO.getEmail()+" already exists it must be unique: " );
 
         patient.setName(patientRequestDTO.getName());
@@ -50,4 +50,7 @@ public class PatientService {
 
     }
 
+    public void deletePatient(UUID id) {
+        patientRepository.deleteById(id);
+    }
 }
