@@ -1,4 +1,4 @@
-package com.pm.patientservice.globalExceptionHadler;
+package com.pm.patientservice.GlobalExceptionHadler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.pm.patientservice.globalExceptionHadler;
+package com.pm.patientservice.GlobalExceptionHadler;
 
 public class PatientNotFoundException extends RuntimeException {
     public PatientNotFoundException(String message) {
